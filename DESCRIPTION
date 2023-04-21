@@ -1,0 +1,11 @@
+Package: slatR
+Title: Shotgun Lipidomics Analysis Toolbox
+Version: 0.0.0.9000
+Authors@R: 
+    person("Brian", "Kleiboeker", , "bkleiboeker@wustl.edu", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-3196-1803"))
+Description: slatR is a collection of functions for analyzing shotgun lipidomics data. 
+License: use_mit_license()
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3.9000
