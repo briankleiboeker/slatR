@@ -10,6 +10,7 @@
 #' @param lois which lipids to look for. Defaults to c("pc","sm","tag","dag") in positive ion mode, c("pe","cer","cl","pi","pg","pa","ps","ffa") in negative ion mode, and the inclusive union of these two lists in neutral mode.
 #' @param max.dbl.bnds maximum acyl+alkyl chain double bonds allowed in returned structures. Defaults to 14.
 #' @keywords structureal assignment
+#' @export
 #' @examples
 #' assign_structures(df$c,df$h,df$o,df$n,df$p,df$na,df$cl,
 #'                   "neg.ion",
@@ -84,7 +85,7 @@ assign_structures <- function(c,h,o,n,p,
   mapply(assign_species,c,h,o,n,p,na,cl,ion.mode,rep(list(adducts),length(c)),( c - (h/2) + ((n+p)/2) +1 ),domain,rep(list(lois),length(c)),max.dbl.bnds,SIMPLIFY = T)
 
 }
-#' @export
+
 
 assign_species <- function(c,h,o,n,p,na,cl,ion.mode,adducts,rdb,domain,lois,max.dbl.bnds){
   if(is.na(rdb) | is.null(adducts)){
