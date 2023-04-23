@@ -7,20 +7,28 @@
 guess_exact_structures(structures)
 }
 \arguments{
-\item{structures}{list (or columns) containing the general structures (from assign_structures() function) for which exact structures are to be queried}
+\item{structures}{list (or columns) containing the general structures (from assign_structures() function) for which exact structures are to be assigned.}
 }
 \description{
-This function gueses an exact lipid structure  (e.g. 16:0/18:1-PE) from general lipid structures (e.g. PE(34:1)) which come from the assign_structures() function
+This function guesses an exact lipid structure  (e.g. 16:0/18:1-PE) from general lipid structures (e.g. PE(34:1)) from the assign_structures() function
 }
 \examples{
-df$structures <- assign_structures(df$c,df$h,df$o,df$n,df$p,df$na,df$cl,
-                  "neg.ion",
-                  "m.minus.h",
-                  "euk",
-                   c("pe","pa","pg","ffa"),
-                   6)
-                   
-exact_structures_df <- guess_exact_structures(df$structures)
+df$c <- extract_num_elements("C",df$composition)
+df$h <- extract_num_elements("H",df$composition)
+df$o <- extract_num_elements("O",df$composition)
+df$n <- extract_num_elements("N",df$composition)
+df$p <- extract_num_elements("P",df$composition)
+df$na <- extract_num_elements("Na",df$composition)
+df$cl <- extract_num_elements("Cl",df$composition)
+
+df$gen.structures <- assign_structures(df$c,df$h,df$o,df$n,df$p,df$na,df$cl,
+                                       "neg.ion",
+                                       "m.minus.h",
+                                       "euk",
+                                       c("pe","pa","pg","ffa"),
+                                       6)
+                                       
+exact_structures_df <- guess_exact_structures(df$gen.structures)
 
 df <- cbind(df,exact_structures_df)
 }

@@ -20,30 +20,38 @@ assign_structures(
 )
 }
 \arguments{
-\item{c, h, o, n, p}{lists (or columns) containing the numbers of each respective elemennt in each respective composition (these should come from from extract_num_elements() function)}
+\item{c, h, o, n, p}{lists (or dataframe columns) containing the numbers of each respective element in each respective composition (these should come from from extract_num_elements() function).}
 
-\item{na, cl}{lists (or columns) containing the numbers of each respective elemennt in each respective composition. Default to zero.}
+\item{na, cl}{lists (or columns) containing the numbers of each respective element in each respective composition. Default to zero.}
 
-\item{ion.mode}{which ion mode the samples were run in. One of "neg.ion","pos.ion",or "neutral" (neutral searches for structures as exact compositions / neutral species)}
+\item{ion.mode}{which ion mode the samples were run in. One of "neg.ion","pos.ion",or "neutral" ("neutral" searches for structures as exact compositions / neutral species).}
 
-\item{adducts}{which adducts to search for compositions as. Defaults to c("m.plus.h","m.plus.ammonia","m.plus.sodium") in positive ion mode, c("m.minus.h","m.plus.chloride","m.minus.2h") in negative ion mode, and the inclusive union of these two lists in neutral mode}
+\item{adducts}{which ions/adducts to search for compositions as. Defaults to c("m.plus.h","m.plus.ammonia","m.plus.sodium") in positive ion mode, c("m.minus.h","m.plus.chloride","m.minus.2h") in negative ion mode, and the inclusive union of these two lists in neutral mode.}
 
-\item{domain}{what domain of life the data originates from. "euk" for eukaryotic, "bact" for bacterial.}
+\item{domain}{what domain of life the data originates from. "euk" for eukaryotic (default) or "bact" for bacterial.}
 
-\item{lois}{which lipids to look for. Defaults to c("pc","sm","tag","dag") in positive ion mode, c("pe","cer","cl","pi","pg","pa","ps","ffa") in negative ion mode, and the inclusive union of these two lists in neutral mode.}
+\item{lois}{which lipid classes to look for. Defaults to c("pc","sm","tag","dag") in positive ion mode, c("pe","cer","cl","pi","pg","pa","ps","ffa") in negative ion mode, and the inclusive union of these two lists in neutral mode.}
 
-\item{max.dbl.bnds}{maximum acyl+alkyl chain double bonds allowed in returned structures. Defaults to 14.}
+\item{max.dbl.bnds}{maximum number of acyl+alkyl chain double bonds allowed in returned structures. Defaults to 14.}
 }
 \description{
-This function assigns general lipid structure (e.g. PC(32:1)) to a user-defined elemental composition
+This function assigns general lipid structure (e.g. PC(32:1)) to a user-defined elemental composition (e.g. C40 H79 N O8 P), or a list/column of elemental compositions
 }
 \examples{
-assign_structures(df$c,df$h,df$o,df$n,df$p,df$na,df$cl,
-                  "neg.ion",
-                  "m.minus.h",
-                  "euk",
-                   c("pe","pa","pg","ffa"),
-                   6)
+
+df$c <- extract_num_elements("C",df$composition)
+df$h <- extract_num_elements("H",df$composition)
+df$o <- extract_num_elements("O",df$composition)
+df$n <- extract_num_elements("N",df$composition)
+df$p <- extract_num_elements("P",df$composition)
+df$na <- extract_num_elements("Na",df$composition)
+df$cl <- extract_num_elements("Cl",df$composition)
+df$gen.structures <- assign_structures(df$c,df$h,df$o,df$n,df$p,df$na,df$cl,
+                                       "neg.ion",
+                                       "m.minus.h",
+                                       "euk",
+                                       c("pe","pa","pg","ffa"),
+                                       6)
 }
 \keyword{assignment}
-\keyword{structureal}
+\keyword{structural}
