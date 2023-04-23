@@ -1,9 +1,9 @@
-#' Extract number of a given element from elemental compositions
+#' Extract the number of a given element from elemental compositions
 #' 
 #'
 #' This function extracts the number of a single element (e.g. carbon, C) from each composition (e.g. C43 H67 O8 N P) in a column of compositions
-#' @param element_letter The element letter you would like to return the number of. Case does not matter. Supported options are c("C","H","O","N","P","Na","Cl","\[13\]C","\[2\]H"), but the regex should be pretty flexible--just double check your results if using something other than these 9 options explicitly
-#' @param column_of_df A list (e.g. a column of a dataframe) which you'd like to extract the number of elements from
+#' @param element_letter The element letter you would like to extract the number of. Case does not matter. Supported options are c("C","H","O","N","P","Na","Cl","\[13\]C","\[2\]H"), but the regex should be pretty flexible--just double check your results if using something other than these 9 options explicitly.
+#' @param column_of_df A list (e.g. a column of a dataframe) of compositions which you'd like to extract the number of elements from.
 #' @keywords composition
 #' @export
 #' @examples

@@ -1,10 +1,10 @@
-#' Assign structures to a list of compositions
+#' Assign structures to a list of elemental compositions (after extracting the number of each element)
 #' 
 #'
 #' This function assigns general lipid structure (e.g. PC(32:1)) to a user-defined elemental composition (e.g. C40 H79 N O8 P), or a list/column of elemental compositions
-#' @param c,h,o,n,p lists (or dataframe columns) containing the numbers of each respective element in each respective composition (these should come from from extract_num_elements() function).
-#' @param na,cl lists (or columns) containing the numbers of each respective element in each respective composition. Default to zero.
-#' @param ion.mode which ion mode the samples were run in. One of "neg.ion","pos.ion",or "neutral" ("neutral" searches for structures as exact compositions / neutral species).
+#' @param c,h,o,n,p lists (or dataframe columns) containing the numbers of each respective element in each respective composition (these should come from extract_num_elements() function).
+#' @param na,cl lists (or dataframe columns) containing the numbers of each respective element in each respective composition. Default to zero.
+#' @param ion.mode which ion mode the samples were run in. One of "neg.ion","pos.ion", or "neutral" ("neutral" searches for structures as exact compositions / neutral species).
 #' @param adducts which ions/adducts to search for compositions as. Defaults to c("m.plus.h","m.plus.ammonia","m.plus.sodium") in positive ion mode, c("m.minus.h","m.plus.chloride","m.minus.2h") in negative ion mode, and the inclusive union of these two lists in neutral mode.
 #' @param domain what domain of life the data originates from. "euk" for eukaryotic (default) or "bact" for bacterial.
 #' @param lois which lipid classes to look for. Defaults to c("pc","sm","tag","dag") in positive ion mode, c("pe","cer","cl","pi","pg","pa","ps","ffa") in negative ion mode, and the inclusive union of these two lists in neutral mode.
@@ -12,7 +12,6 @@
 #' @keywords structural assignment
 #' @export
 #' @examples
-#' 
 #' df$c <- extract_num_elements("C",df$composition)
 #' df$h <- extract_num_elements("H",df$composition)
 #' df$o <- extract_num_elements("O",df$composition)
@@ -20,13 +19,11 @@
 #' df$p <- extract_num_elements("P",df$composition)
 #' df$na <- extract_num_elements("Na",df$composition)
 #' df$cl <- extract_num_elements("Cl",df$composition)
-
+#'
 #' df$gen.structures <- assign_structures(df$c,df$h,df$o,df$n,df$p,df$na,df$cl,
 #'                                        "neg.ion",
-#'                                        "m.minus.h",
-#'                                        "euk",
-#'                                        c("pe","pa","pg","ffa"),
-#'                                        6)
+#'                                        domain = "euk",
+#'                                        max.dbl.bnds = 8)
 
 
 assign_structures <- function(c,h,o,n,p,
