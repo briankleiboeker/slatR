@@ -26,9 +26,13 @@ normalize_sl <- function(m, log.normalize = T){
   }
   
   if(log.normalize){
-    preprocessCore::normalize.quantiles(log2(m))
+    m2 <- preprocessCore::normalize.quantiles(log2(m))
+    rownames(m2)<-rownames(m)
+    colnames(m2)<-colnames(m)
   }else{
-    preprocessCore::normalize.quantiles(m)
+    m2 <- preprocessCore::normalize.quantiles(m)
+    rownames(m2)<-rownames(m)
+    colnames(m2)<-colnames(m)
   }
   
 }
