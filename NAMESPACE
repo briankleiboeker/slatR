@@ -3,3 +3,6 @@
 export(assign_structures)
 export(extract_num_elements)
 export(guess_exact_structures)
+export(impute_sl)
+export(normalize_sl)
+export(test_for_da_sl)
