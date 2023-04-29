@@ -8,8 +8,8 @@
 #' @param domain what domain of life the data originates from. "euk" for eukaryotic (default) or "bact" for bacterial.
 #' @param lois which lipid classes to look for. Defaults to c("pc","sm","tag","dag") in positive ion mode, c("pe","cer","cl","pi","pg","pa","ps","ffa") in negative ion mode, and the inclusive union of these two lists in neutral mode.
 #' @param max.dbl.bnds maximum number of acyl+alkyl chain double bonds allowed in returned structures. Defaults to 14.
-#' @param carbon_isotope_symbol string which is used to denote carbon isotope used, if applicable. Defaults to "\[13\]C"
-#' @param hydrogen_isotope_symbol string which is used to denote hydrogen isotope used, if applicable. Defaults to "\[2\]H"
+#' @param carbon_isotope_symbol string which is used to denote carbon isotope used, if applicable. Defaults to "\[13C\]"
+#' @param hydrogen_isotope_symbol string which is used to denote hydrogen isotope used, if applicable. Defaults to "\[2H\]"
 #' @keywords structural assignment
 #' @export
 #' @examples
@@ -33,8 +33,8 @@ assign_structures <- function(comp,
                               domain = "euk",
                               lois = NULL,
                               max.dbl.bnds = 14,
-                              carbon_isotope_symbol = "[13]C",
-                              hydrogen_isotope_symbol = "[2]H"){
+                              carbon_isotope_symbol = "[13C]",
+                              hydrogen_isotope_symbol = "[2H]"){
   if(!(ion.mode %in% c("neg.ion","pos.ion","neutral")) | length(ion.mode) > 1){
     abort("problem in ion.mode argument (ion.mode must be one of neg.ion, pos.ion, or neutral)")
   }
