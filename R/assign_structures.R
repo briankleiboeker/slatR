@@ -79,18 +79,22 @@ assign_structures <- function(comp,
 
   c_tot <- (extract_num_elements_internal("C",comp) + extract_num_elements_internal(carbon_isotope_symbol,comp))
   h_tot <- (extract_num_elements_internal("H",comp) + extract_num_elements_internal(hydrogen_isotope_symbol,comp))
-  o <- extract_num_elements_internal("O",comp)
   n <- extract_num_elements_internal("N",comp)
   p <- extract_num_elements_internal("P",comp)
-  na <- extract_num_elements_internal("Na",comp)
-  cl <- extract_num_elements_internal("Cl",comp)
+  
   result <- mapply(assign_species,
-         c_tot,h_tot,o,n,p,na,cl,
+         c_tot,
+         h_tot,
+         extract_num_elements_internal("O",comp),
+         n,
+         p,
+         extract_num_elements_internal("Na",comp),
+         extract_num_elements_internal("Cl",comp),
          ion.mode,
-         rep(list(adducts),length(c)),
-         ( c - (h/2) + ((n+p)/2) +1 ),
+         rep(list(adducts),length(c_tot)),
+         ( c_tot - (h_tot/2) + ((n+p)/2) +1 ),
          domain,
-         rep(list(lois),length(c)),
+         rep(list(lois),length(c_tot)),
          max.dbl.bnds,
          SIMPLIFY = T)
   if(all(is.na(r))){
