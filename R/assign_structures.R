@@ -77,19 +77,21 @@ assign_structures <- function(comp,
     }
   }
 
-  
+  c_tot <- (extract_num_elements_internal("C",comp) + extract_num_elements_internal(carbon_isotope_symbol,comp))
+  h_tot <- (extract_num_elements_internal("H",comp) + extract_num_elements_internal(hydrogen_isotope_symbol,comp))
   result <- mapply(assign_species,
-         (extract_num_elements_internal("C",comp) + extract_num_elements_internal(carbon_isotope_symbol,comp)),
-         (extract_num_elements_internal("H",comp) + extract_num_elements_internal(hydrogen_isotope_symbol,comp)),
+         c_tot,
+         h_tot,
          extract_num_elements_internal("O",comp),
          extract_num_elements_internal("N",comp),
          extract_num_elements_internal("P",comp),
          extract_num_elements_internal("Na",comp),
          extract_num_elements_internal("Cl",comp),
-         ion.mode,rep(list(adducts),length(c)),
+         ion.mode,
+         rep(list(adducts),length(c)),
          ( c - (h/2) + ((n+p)/2) +1 ),
-         domain,rep(list(lois),
-                    length(c)),
+         domain,
+         rep(list(lois),length(c)),
          max.dbl.bnds,
          SIMPLIFY = T)
   if(all(is.na(r))){
