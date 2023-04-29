@@ -98,8 +98,7 @@ assign_structures <- function(comp,
          max.dbl.bnds,
          SIMPLIFY = T)
   if(all(is.na(result))){
-    warning("No structures were assigned. Ensure that numbers of elements were extracted correctly from compositions: ",print_and_capture(head(data.frame(comp,
-                                                                                                                                                          "n_c" = extract_num_elements_internal("C",comp),
+    warning("No structures were assigned. Ensure that numbers of elements were extracted correctly from compositions: \n",print_and_capture(head(as.matrix(data.frame("n_c" = extract_num_elements_internal("C",comp),
                                                                                                                                                           "n_c_isotope" = extract_num_elements_internal(carbon_isotope_symbol,comp),
                                                                                                                                                           "n_h" = extract_num_elements_internal("H",comp),
                                                                                                                                                           "n_h_isotope" = extract_num_elements_internal(hydrogen_isotope_symbol,comp),
@@ -108,7 +107,7 @@ assign_structures <- function(comp,
                                                                                                                                                           "n_p" = extract_num_elements_internal("P",comp),
                                                                                                                                                           "n_na" = extract_num_elements_internal("Na",comp),
                                                                                                                                                           "n_cl" = extract_num_elements_internal("Cl",comp)
-                                                                                                                                                          ))))
+                                                                                                                                                          )))))
     result
   }else{
     result
