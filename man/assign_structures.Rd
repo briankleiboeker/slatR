@@ -5,24 +5,18 @@
 \title{Assign structures to a list of elemental compositions (after extracting the number of each element)}
 \usage{
 assign_structures(
-  c,
-  h,
-  o,
-  n,
-  p,
-  na = NULL,
-  cl = NULL,
+  comp,
   ion.mode,
   adducts = NULL,
   domain = "euk",
   lois = NULL,
-  max.dbl.bnds = 14
+  max.dbl.bnds = 14,
+  carbon_isotope_symbol = "[13]C",
+  hydrogen_isotope_symbol = "[2]H"
 )
 }
 \arguments{
-\item{c, h, o, n, p}{lists (or dataframe columns) containing the numbers of each respective element in each respective composition (these should come from extract_num_elements() function).}
-
-\item{na, cl}{lists (or dataframe columns) containing the numbers of each respective element in each respective composition. Default to zero.}
+\item{comp}{list (or dataframe column) of elemental compositions for which structures are to be assigned}
 
 \item{ion.mode}{which ion mode the samples were run in. One of "neg.ion","pos.ion", or "neutral" ("neutral" searches for structures as exact compositions / neutral species).}
 
@@ -33,6 +27,10 @@ assign_structures(
 \item{lois}{which lipid classes to look for. Defaults to c("pc","sm","tag","dag") in positive ion mode, c("pe","cer","cl","pi","pg","pa","ps","ffa") in negative ion mode, and the inclusive union of these two lists in neutral mode.}
 
 \item{max.dbl.bnds}{maximum number of acyl+alkyl chain double bonds allowed in returned structures. Defaults to 14.}
+
+\item{carbon_isotope_symbol}{string which is used to denote carbon isotope used, if applicable. Defaults to "[13]C"}
+
+\item{hydrogen_isotope_symbol}{string which is used to denote hydrogen isotope used, if applicable. Defaults to "[2]H"}
 }
 \description{
 This function assigns general lipid structure (e.g. PC(32:1)) to a user-defined elemental composition (e.g. C40 H79 N O8 P), or a list/column of elemental compositions

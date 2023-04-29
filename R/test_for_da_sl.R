@@ -26,7 +26,7 @@ test_for_da_sl <- function(m,a,b){
   drop <- unname(unlist(apply(m,1,function(x) ifelse(length(unique(x))==1,F,T))))
   
   if(length(which(!drop)) >= 1){
-    warning(paste("one or more rows was dropped due to data being constante. Row(s): ",which(!drop)))
+    warning(paste("One or more rows was dropped due to data being constant. Dropped row(s): ",which(!drop)))
   }
   
   m <- m[drop,]
