@@ -97,7 +97,7 @@ assign_structures <- function(comp,
          rep(list(lois),length(c_tot)),
          max.dbl.bnds,
          SIMPLIFY = T)
-  if(all(is.na(r))){
+  if(all(is.na(result))){
     warning("No structures were assigned. Ensure that numbers of elements were extracted correctly from compositions: ",print_and_capture(head(data.frame(comp,
                                                                                                                                                           "n_c" = extract_num_elements_internal("C",comp),
                                                                                                                                                           "n_c_isotope" = extract_num_elements_internal(carbon_isotope_symbol,comp),
