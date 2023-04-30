@@ -2,7 +2,7 @@
 % Please edit documentation in R/assign_structures.R
 \name{assign_structures}
 \alias{assign_structures}
-\title{Assign structures to a list of elemental compositions (after extracting the number of each element)}
+\title{Assign structures to a list of elemental compositions}
 \usage{
 assign_structures(
   comp,
@@ -11,12 +11,12 @@ assign_structures(
   domain = "euk",
   lois = NULL,
   max.dbl.bnds = 14,
-  carbon_isotope_symbol = "[13]C",
-  hydrogen_isotope_symbol = "[2]H"
+  carbon_isotope_symbol = "[13C]",
+  hydrogen_isotope_symbol = "[2H]"
 )
 }
 \arguments{
-\item{comp}{list (or dataframe column) of elemental compositions for which structures are to be assigned}
+\item{comp}{list (or dataframe column) of elemental compositions for which structures are to be assigned.}
 
 \item{ion.mode}{which ion mode the samples were run in. One of "neg.ion","pos.ion", or "neutral" ("neutral" searches for structures as exact compositions / neutral species).}
 
@@ -28,24 +28,16 @@ assign_structures(
 
 \item{max.dbl.bnds}{maximum number of acyl+alkyl chain double bonds allowed in returned structures. Defaults to 14.}
 
-\item{carbon_isotope_symbol}{string which is used to denote carbon isotope used, if applicable. Defaults to "[13]C"}
+\item{carbon_isotope_symbol}{string which is used to denote carbon isotope used, if applicable. Defaults to "[13C]".}
 
-\item{hydrogen_isotope_symbol}{string which is used to denote hydrogen isotope used, if applicable. Defaults to "[2]H"}
+\item{hydrogen_isotope_symbol}{string which is used to denote hydrogen isotope used, if applicable. Defaults to "[2H]".}
 }
 \description{
 This function assigns general lipid structure (e.g. PC(32:1)) to a user-defined elemental composition (e.g. C40 H79 N O8 P), or a list/column of elemental compositions
 }
 \examples{
-df$c <- extract_num_elements("C",df$composition)
-df$h <- extract_num_elements("H",df$composition)
-df$o <- extract_num_elements("O",df$composition)
-df$n <- extract_num_elements("N",df$composition)
-df$p <- extract_num_elements("P",df$composition)
-df$na <- extract_num_elements("Na",df$composition)
-df$cl <- extract_num_elements("Cl",df$composition)
-
-df$gen.structures <- assign_structures(df$c,df$h,df$o,df$n,df$p,df$na,df$cl,
-                                       "neg.ion",
+df$gen.structures <- assign_structures(comp = df$composition,
+                                       ion.mode = "neg.ion",
                                        domain = "euk",
                                        max.dbl.bnds = 8)
 }

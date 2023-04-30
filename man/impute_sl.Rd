@@ -7,10 +7,10 @@
 impute_sl(m)
 }
 \arguments{
-\item{m}{a matrix of shotgun lipidomics data where rownames are lipid compositions, structures, or any other unique identifier, columns correspond to samples or replicates, and all entries of matrix are coercible to numeric}
+\item{m}{a matrix of shotgun lipidomics data where rownames are lipid compositions, structures, or any other unique identifier, columns are samples or replicates, and all entries of matrix are coercible to numeric.}
 }
 \description{
-This function performs a sample minimum imputation of a shotgun lipidomics data matrix where missing values are NA
+This function performs a sample minimum imputation of a shotgun lipidomics data matrix where missing values are represented by NA
 }
 \examples{
 m <- df \%>\% dplyr::select(c("rel.intensity","sample","comp")) \%>\% 

@@ -6,16 +6,8 @@
 #' @keywords structural assignment
 #' @export
 #' @examples
-#' df$c <- extract_num_elements("C",df$composition)
-#' df$h <- extract_num_elements("H",df$composition)
-#' df$o <- extract_num_elements("O",df$composition)
-#' df$n <- extract_num_elements("N",df$composition)
-#' df$p <- extract_num_elements("P",df$composition)
-#' df$na <- extract_num_elements("Na",df$composition)
-#' df$cl <- extract_num_elements("Cl",df$composition)
-#'
-#' df$gen.structures <- assign_structures(df$c,df$h,df$o,df$n,df$p,df$na,df$cl,
-#'                                        "neg.ion",
+#' df$gen.structures <- assign_structures(comp = df$composition,
+#'                                        ion.mode = "neg.ion",
 #'                                        domain = "euk",
 #'                                        max.dbl.bnds = 8)
 #'                                        

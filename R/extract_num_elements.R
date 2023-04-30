@@ -2,15 +2,15 @@
 #' 
 #'
 #' This function extracts the number of a single element (e.g. carbon, C) from each composition (e.g. C43 H67 O8 N P) in a column of compositions
-#' @param element_letter The element letter you would like to extract the number of. Case does not matter. Supported options are c("C","H","O","N","P","Na","Cl","\[13\]C","\[2\]H"), but the regex should be pretty flexible--just double check your results if using something other than these 9 options explicitly.
+#' @param element_letter The element letter you would like to extract the number of. Case does not matter. Supported options are c("C","H","O","N","P","Na","Cl","\[13C\]","\[2H\]"), but the regex should be pretty flexible--just double check your results if using something other than these 9 options explicitly.
 #' @param column_of_df A list (e.g. a column of a dataframe) of compositions which you'd like to extract the number of elements from.
 #' @keywords composition
 #' @export
 #' @examples
 #' df$c <- extract_num_elements("C",df$composition)
-#' df$c_isotope <-  extract_num_elements("[13]C",df$composition)
+#' df$c_isotope <-  extract_num_elements("[13C]",df$composition)
 #' df$h <- extract_num_elements("H",df$composition)
-#' df$h_isotope <- extract_num_elements("[2]H",df$composition)
+#' df$h_isotope <- extract_num_elements("[2H]",df$composition)
 #' df$o <- extract_num_elements("O",df$composition)
 #' df$n <- extract_num_elements("N",df$composition)
 #' df$p <- extract_num_elements("P",df$composition)

@@ -13,16 +13,8 @@ guess_exact_structures(structures)
 This function guesses an exact lipid structure (e.g. 16:0/18:1-PE) from general lipid structures (e.g. PE(34:1)) from the assign_structures() function
 }
 \examples{
-df$c <- extract_num_elements("C",df$composition)
-df$h <- extract_num_elements("H",df$composition)
-df$o <- extract_num_elements("O",df$composition)
-df$n <- extract_num_elements("N",df$composition)
-df$p <- extract_num_elements("P",df$composition)
-df$na <- extract_num_elements("Na",df$composition)
-df$cl <- extract_num_elements("Cl",df$composition)
-
-df$gen.structures <- assign_structures(df$c,df$h,df$o,df$n,df$p,df$na,df$cl,
-                                       "neg.ion",
+df$gen.structures <- assign_structures(comp = df$composition,
+                                       ion.mode = "neg.ion",
                                        domain = "euk",
                                        max.dbl.bnds = 8)
                                        

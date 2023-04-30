@@ -1,9 +1,9 @@
 #' Normalize shotgun lipidomics data matrix
 #' 
 #'
-#' This function performs a quantile normalization (preprocessCore::normalize.quantiles) of a shotgun lipidomics data matrix of 100 rows (= species) or more
-#' @param m a matrix of shotgun lipidomics data where rownames are lipid compositions, structures, or any other unique identifier, columns correspond to samples or replicates, and all entries of matrix are coercible to numeric
-#' @param log.normalize log2 transform data before normalization? Default = TRUE
+#' This function performs a quantile normalization (using preprocessCore::normalize.quantiles) of a shotgun lipidomics data matrix of 100 rows or more
+#' @param m a matrix of shotgun lipidomics data where rownames are lipid compositions, structures, or any other unique identifier, columns are samples or replicates, and all entries of matrix are coercible to numeric.
+#' @param log.normalize log2 transform data before normalization? Default = TRUE.
 #' @export
 #' @examples
 #' m <- df %>% dplyr::select(c("rel.intensity","sample","comp")) %>% 

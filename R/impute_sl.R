@@ -1,8 +1,8 @@
 #' Impute missing values in shotgun lipidomics data matrix
 #' 
 #'
-#' This function performs a sample minimum imputation of a shotgun lipidomics data matrix where missing values are NA
-#' @param m a matrix of shotgun lipidomics data where rownames are lipid compositions, structures, or any other unique identifier, columns correspond to samples or replicates, and all entries of matrix are coercible to numeric
+#' This function performs a sample minimum imputation of a shotgun lipidomics data matrix where missing values are represented by NA
+#' @param m a matrix of shotgun lipidomics data where rownames are lipid compositions, structures, or any other unique identifier, columns are samples or replicates, and all entries of matrix are coercible to numeric.
 #' @keywords normalization
 #' @export
 #' @examples

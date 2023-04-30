@@ -2,19 +2,35 @@
 % Please edit documentation in R/test_for_da_sl.R
 \name{test_for_da_sl}
 \alias{test_for_da_sl}
-\title{Test all lipid species for differential abundance}
+\title{Test shotgun lipidomic data for differential abundance of all lipid species}
 \usage{
-test_for_da_sl(m, a, b)
+test_for_da_sl(
+  m,
+  a,
+  b,
+  alternative = "two.sided",
+  paired = FALSE,
+  var.equal = FALSE,
+  p.adj.method = "BH"
+)
 }
 \arguments{
-\item{m}{a matrix of shotgun lipidomics data where rownames are lipid compositions, structures, or any other unique identifier, columns correspond to samples or replicates, and all entries of matrix are coercible to numeric (matrix should already be normalized and have had missing values imputted)}
+\item{m}{a matrix of shotgun lipidomics data where rownames are lipid compositions, structures, or any other unique identifier, columns are samples or replicates, and all entries of matrix are coercible to numeric.}
 
-\item{a}{column names corresponding to control condition}
+\item{a}{column names corresponding to control condition.}
 
-\item{b}{column names corresponding to experimental condition}
+\item{b}{column names corresponding to experimental condition.}
+
+\item{alternative}{a character string specifying the alternative hypothesis, must be one of "two.sided" (default), "greater" or "less". You can specify just the initial letter.}
+
+\item{paired}{a logical indicating whether you want a paired t-test. Defaults to FALSE.}
+
+\item{var.equal}{a logical variable indicating whether to treat the two variances as being equal. If TRUE then the pooled variance is used to estimate the variance otherwise the Welch (or Satterthwaite) approximation to the degrees of freedom is used. Defaults to FALSE.}
+
+\item{p.adj.method}{p-value correction method. One of c("holm", "hochberg", "hommel", "bonferroni", "BH", "BY","fdr", "none"). Call ?p.adjust.methods for more information. Defaults to "BH".}
 }
 \description{
-This function performs tests all species for differential abundance across two biological conditions
+This function tests all lipid species for differential abundance across two biological conditions in a shotgun lipidomics data matrix
 }
 \examples{
 m <- df \%>\% dplyr::select(c("rel.intensity","sample","comp")) \%>\% 
