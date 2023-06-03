@@ -27,19 +27,19 @@ assign_structures <- function(comp,
                               carbon_isotope_symbol = "C[13]",
                               hydrogen_isotope_symbol = "D[2]"){
   if(!(ion.mode %in% c("neg.ion","pos.ion","neutral")) | length(ion.mode) > 1){
-    abort("problem in ion.mode argument (ion.mode must be one of neg.ion, pos.ion, or neutral)")
+    rlang::abort("problem in ion.mode argument (ion.mode must be one of neg.ion, pos.ion, or neutral)")
   }
   if(!is.null(adducts) & any(!(adducts %in% c("m.minus.h","m.plus.chloride","m.minus.2h","m.plus.h","m.plus.ammonia","m.plus.sodium")))){
-    abort("one or more of inputted adducts are invalid (only valid adducts are m.minus.h,m.plus.chloride,m.minus.2h,m.plus.h,m.plus.ammonia,m.plus.sodium)")
+    rlang::abort("one or more of inputted adducts are invalid (only valid adducts are m.minus.h,m.plus.chloride,m.minus.2h,m.plus.h,m.plus.ammonia,m.plus.sodium)")
   }
   if(!(domain %in% c("euk","bact")) | length(domain) > 1){
-    abort("Invalid domain argument (domain must be one of euk or bact)")
+    rlang::abort("Invalid domain argument (domain must be one of euk or bact)")
   }
   if(!is.null(lois) & any(!(lois %in% c("pe","cer","cl","pi","pg","pa","ps","ffa","pc","sm","tag","dag")))){
-    abort("one or more user-supplied input to lois argument is invalid (only valid lois are pe,cer,cl,pi,pg,pa,ps,ffa,pc,sm,tag,dag)")
+    rlang::abort("one or more user-supplied input to lois argument is invalid (only valid lois are pe,cer,cl,pi,pg,pa,ps,ffa,pc,sm,tag,dag)")
   }
   if(!is.numeric(max.dbl.bnds) | length(max.dbl.bnds) > 1){
-    abort("max.dbl.bnds argument not numeric")
+    rlang::abort("max.dbl.bnds argument not numeric")
   }
   
   #define adducts

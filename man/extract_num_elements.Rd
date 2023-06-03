@@ -12,10 +12,11 @@ extract_num_elements(element_letter, column_of_df)
 \item{column_of_df}{A list (e.g. a column of a dataframe) of compositions which you'd like to extract the number of elements from.}
 }
 \description{
-This function extracts the number of a single element (e.g. carbon, C) from each composition (e.g. C43 H67 O8 N P) in a column of compositions
+This function extracts the number of a single element (e.g. carbon, "C") from each composition (e.g. C43 H67 O8 N P) in a column of compositions
 }
 \examples{
 df$c <- extract_num_elements("C",df$composition)
+# for isotopes, make sure to pass the exact format of your isotope symbol to the element_letter argument
 df$c_isotope <-  extract_num_elements("[13C]",df$composition)
 df$h <- extract_num_elements("H",df$composition)
 df$h_isotope <- extract_num_elements("[2H]",df$composition)

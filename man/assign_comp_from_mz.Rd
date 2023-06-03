@@ -17,32 +17,37 @@ assign_comp_from_mz(
 )
 }
 \arguments{
-\item{mz}{list of m/z values to which composition is to be assigned}
+\item{mz}{list (or dataframe column) of m/z values to which composition is to be assigned}
 
-\item{elements}{list of elements which may appear in composition (Exact element letter only, case sensitive). E.g c("H", "C", "Cl")}
+\item{elements}{list of elements which may be included in composition (Exact element letter only, case sensitive).}
 
-\item{isotope}{atomic number or isotope number of desired element (NOT atomic mass). E.g.  c(1, 12, 35)}
+\item{isotope}{atomic number/isotope number of desired element (NOT atomic mass).}
 
-\item{mins.list}{minimum number of elements which are allowed in composition in the same order as elements and isotope arguments.}
+\item{mins.list}{minimum number of elements which are allowed in composition (must be in the same order as elements and isotope arguments).}
 
-\item{maxs.list}{maximum number of elements which are allowed in composition in the same order as elements and isotope arguments.}
+\item{maxs.list}{maximum number of elements which are allowed in composition (must be in the same order as elements and isotope arguments).}
 
-\item{ionmode}{Ion mode the samples were run in. Must be one of "neg.ion", "pos.ion", or "neutral"}
+\item{ionmode}{ion mode the samples were run in. Must be one of "neg.ion", "pos.ion", or "neutral".}
 
-\item{error.ppm}{the maximum error allowed for assigned compositions. Defaults to 5.}
+\item{error.ppm}{the maximum error ("delta", in units ppm) allowed for assigned compositions. Defaults to 5 ppm.}
 
-\item{rdbrange}{the range of allowed RDB (Relative double bond equivalents) values of assigned compositons. Defaults to c(-1,100)}
+\item{rdbrange}{the range of allowed RDB (relative double bond equivalents) values of assigned compositions. Defaults to -1 to 100 (denoted: c(-1,100)).}
 
-\item{rdb.rule}{rule to force assignment of elemental compositions to only those that have a certain RDB characteristic (e.g integer values or non-integer values). Options are "none", "nonint", or "int". Defaults to "none" meaning composition will be assigned as the closest match to m/z value regardless of its RDB.}
+\item{rdb.rule}{force assignment of elemental compositions to only those that have a certain RDB characteristic (e.g integer values or non-integer values)? Options are "none", "nonint", or "int". Defaults to "none" meaning composition will be assigned as the closest match to m/z value regardless of RDB.}
 }
 \description{
 This function assigns elemental composition to user-supplied m/z values in accordance with user-supplied constraints
 }
 \examples{
-df$gen.structures <- assign_structures(comp = df$composition,
-                                       ion.mode = "neg.ion",
-                                       domain = "euk",
-                                       max.dbl.bnds = 8)
+assign_comp_from_mz(df$mz,
+                    elements = c("C","H","O","N","P","Na","Cl"),
+                    isotope = c(12,1,16,14,31,23,35),
+                    mins.list = c(10,20,2,0,0,0,0),
+                    maxs.list = c(60,160,16,2,2,0,1),
+                    ion.mode = "neg.ion",
+                    error.ppm = 1,
+                    rdb.rule = "nonint")
+
 }
 \keyword{assignment}
 \keyword{composition}

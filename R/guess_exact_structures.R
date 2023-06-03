@@ -20,7 +20,7 @@ guess_exact_structures <- function(structures,
                                    strain = "n/a"){
   
   if(!(strain %in% c("n/a", "e.coli","listeria","streptococcus"))){
-    abort("invalid input for strain")
+    rlang::abort("invalid input for strain")
   }
   
   df <- data.frame("structure" = structures)

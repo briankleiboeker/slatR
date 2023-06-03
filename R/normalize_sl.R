@@ -19,7 +19,7 @@ normalize_sl <- function(m, log.normalize = T){
     m <- as.matrix(m)
   }
   if(nrow(m)<100){
-    abort("too few rows (= lipids) to normalize matrix (minimum = 100)")
+    rlang::abort("too few rows (= lipids) to normalize matrix (minimum = 100)")
   }
   if(!is.numeric(m)){
     m <- convert_to_numeric(m)
