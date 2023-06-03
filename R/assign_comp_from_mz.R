@@ -33,13 +33,13 @@ assign_comp_from_mz <- function(mz,
   maxs.list <- as.numeric(maxs.list)
   
   if(!all(paste0(elements,isotope) %in% paste0(all.elements$element,all.elements$isotope))){
-    abort(paste0("one or more invalid element/isotope combinations. Most likely invalid element(s) are: ",
+    rlang::abort(paste0("one or more invalid element/isotope combinations. Most likely invalid element(s) are: ",
                  paste(paste0(elements,isotope)[!(paste0(elements,isotope) %in% paste0(all.elements$element,all.elements$isotope))],collapse = ", ")
                  )
           )
   }
   if(!( ionmode %in% c("neutral","neg.ion","pos.ion") )){
-    abort("invalid ionmode argument")
+    rlang::abort("invalid ionmode argument")
   }
   
   all.elements$full.element = paste0(all.elements$element,"[",all.elements$isotope,"]")
