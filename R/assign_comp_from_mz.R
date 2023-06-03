@@ -109,7 +109,8 @@ assign_comp_from_mz <- function(mz,
                }
              }
       )
-    return(data.frame("composition" = unlist(lapply(results,`[[`, 1)),
+    return(data.frame("mz" = mz, 
+                      "composition" = unlist(lapply(results,`[[`, 1)),
                       "theo.mass" = unlist(lapply(results,`[[`, 2)),
                       "delta" = unlist(lapply(results,`[[`, 3))
                       )
@@ -192,7 +193,8 @@ assign_comp_from_mz <- function(mz,
         return(c(rep("",3)))
       }})
     
-    return(data.frame("composition" = unlist(lapply(results,`[[`, 1)),
+    return(data.frame("mz" = mz, 
+                      "composition" = unlist(lapply(results,`[[`, 1)),
                       "theo.mass" = unlist(lapply(results,`[[`, 2)),
                       "delta" = unlist(lapply(results,`[[`, 3))
                       )
