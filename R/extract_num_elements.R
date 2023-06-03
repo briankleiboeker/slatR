@@ -20,11 +20,21 @@
 extract_num_elements <- function(element_letter,column_of_df){
   sapply(column_of_df, function(x){
     if(element_letter=="N"|element_letter=="n"){
-      element_letter<-"N(?!a)"
+      element_letter<-"(?<!I|M|Z|S|R)N(?!a|s|d|e|p|i|b|o)"
     }
     if(element_letter=="C"|element_letter=="c"){
-      element_letter<-"C(?!l)"
+      element_letter<-"(?<!A|T|S)C(?!a|d|f|e|s|l|r|o|u|m)"
     }
+    if(element_letter=="H"|element_letter=="h"){
+      element_letter<-"(?<!T|R)H(?!g|f|s|e|o)"
+    }
+    if(element_letter=="O"|element_letter=="o"){
+      element_letter<-"(?<!H|C|P|N)O(?!s)"
+    }
+    if(element_letter=="P"|element_letter=="p"){
+      element_letter<-"(?<!N)P(?!b|d|t|u|o|r|m|a)"
+    }
+    
     #if there is a square bracket (i.e. if it's an isotope), substitute in the double brackets so it works with regex below
     if(grepl("\\[",element_letter)){
       element_letter<-gsub("\\[","\\\\[",element_letter)

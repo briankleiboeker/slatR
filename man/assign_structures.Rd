@@ -11,8 +11,8 @@ assign_structures(
   domain = "euk",
   lois = NULL,
   max.dbl.bnds = 14,
-  carbon_isotope_symbol = "[13C]",
-  hydrogen_isotope_symbol = "[2H]"
+  carbon_isotope_symbol = "C[13]",
+  hydrogen_isotope_symbol = "D[2]"
 )
 }
 \arguments{
@@ -24,13 +24,13 @@ assign_structures(
 
 \item{domain}{what domain of life the data originates from. "euk" for eukaryotic (default) or "bact" for bacterial.}
 
-\item{lois}{which lipid classes to look for. Defaults to c("pc","sm","tag","dag") in positive ion mode, c("pe","cer","cl","pi","pg","pa","ps","ffa") in negative ion mode, and the inclusive union of these two lists in neutral mode.}
+\item{lois}{which lipid classes to look for. Defaults to c("pc","sm","tag","dag","gdg") in positive ion mode, c("pe","cer","cl","pi","pg","pa","ps","ffa","gdg") in negative ion mode, and the inclusive union of these two lists in neutral mode (Diacylglycerol = "dag", Triacylglycerol = "tag", Phosphatidic acid = "pa", Phosphatidylglycerol = "pg", Phosphatidylinositol = "pi", Cardiolipin = "cl", Sphingomyelin = "sm", Ceramide = "cer", Phosphatidylcholine = "pc", Phosphatidylethanolamine = "pe", Phosphatidylserine = "ps", Free fatty acids = "ffa", Glycosyldiacylglycerols = "gdg")}
 
 \item{max.dbl.bnds}{maximum number of acyl+alkyl chain double bonds allowed in returned structures. Defaults to 14.}
 
-\item{carbon_isotope_symbol}{string which is used to denote carbon isotope used, if applicable. Defaults to "[13C]".}
+\item{carbon_isotope_symbol}{string which is used to denote carbon isotope used, if applicable. Defaults to "C[13]".}
 
-\item{hydrogen_isotope_symbol}{string which is used to denote hydrogen isotope used, if applicable. Defaults to "[2H]".}
+\item{hydrogen_isotope_symbol}{string which is used to denote hydrogen isotope used, if applicable. Defaults to "D[2]".}
 }
 \description{
 This function assigns general lipid structure (e.g. PC(32:1)) to a user-defined elemental composition (e.g. C40 H79 N O8 P), or a list/column of elemental compositions

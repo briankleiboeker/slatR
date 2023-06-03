@@ -4,10 +4,12 @@
 \alias{guess_exact_structures}
 \title{Guess exact structures from general structures}
 \usage{
-guess_exact_structures(structures)
+guess_exact_structures(structures, strain = "n/a")
 }
 \arguments{
 \item{structures}{list (or dataframe column) containing the general structures (from assign_structures() function) for which exact structures are to be assigned.}
+
+\item{strain}{which bacterial strain data originates from, if applicable. Strain options are "e.coli", "listeria", "streptococcus". Defaults to n/a (meaning data is either not from bacteria or is from an unsupported bacterial strain).}
 }
 \description{
 This function guesses an exact lipid structure (e.g. 16:0/18:1-PE) from general lipid structures (e.g. PE(34:1)) from the assign_structures() function
