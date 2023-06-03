@@ -38,7 +38,11 @@ assign_comp_from_mz <- function(mz,
                  )
           )
   }
+  if(!( ionmode %in% c("neutral","neg.ion","pos.ion") )){
+    abort("invalid ionmode argument")
+  }
   
+  all.elements$full.element = paste0(all.elements$element,"[",all.elements$isotope,"]")
   atomic.mass <- all.elements$atomic.mass[match(paste0(elements,isotope),paste0(all.elements$element,all.elements$isotope))]
   
   if(rdb.rule == "none"){
