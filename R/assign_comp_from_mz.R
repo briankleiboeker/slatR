@@ -74,8 +74,7 @@ assign_comp_from_mz <- function(mz,
     clean_elements <- ifelse(paste0(elements,"[",isotope,"]") %in% all.elements[all.elements$isotopic.composition > 0.9,colnames(all.elements) == "full.element"],elements,paste0(elements,"[",isotope,"]"))
     order <- c("C","C[13]","C[14]","H","D[2]","T[3]","O","O[17]","O[18}","N","N[15]","P","Na","Cl[35]","Cl[37]")
     
-    return(
-      lapply(mz,
+    results <- lapply(mz,
              function(x) {
                a<-Rglpk::Rglpk_solve_LP(obj = v, mat = rbind(t(v),rdb.row,rdb.row), dir = c("<=","<=",">="), rhs = c(x,rdbrange[2]-1,rdbrange[1]-1), bounds = bounds,max = TRUE, types = "I")
                b<-Rglpk::Rglpk_solve_LP(obj = v, mat = rbind(t(v),rdb.row,rdb.row), dir = c(">=","<=",">="), rhs = c(x,rdbrange[2]-1,rdbrange[1]-1), bounds = bounds,max = FALSE, types = "I")
@@ -110,7 +109,12 @@ assign_comp_from_mz <- function(mz,
                }
              }
       )
-    ) 
+    return(data.frame("composition" = unlist(lapply(results,`[[`, 1)),
+                      "theo.mass" = unlist(lapply(results,`[[`, 2)),
+                      "delta" = unlist(lapply(results,`[[`, 3))
+                      )
+           )
+    
     
     
   }else{
@@ -156,7 +160,7 @@ assign_comp_from_mz <- function(mz,
     order <- c("C","C[13]","C[14]","H","D[2]","T[3]","O","O[17]","O[18}","N","N[15]","P","Na","Cl[35]","Cl[37]")
     
     
-    return(lapply(mz,function(x){
+    results <- lapply(mz,function(x){
       a<-Rglpk::Rglpk_solve_LP(obj = v, mat = rbind(t(v),rdb.row,rdb.row,rdb.row2), dir = c("<=","<=",">=","=="), rhs = c(x,rdbrange[2]-1,rdbrange[1]-1,rhs.var), bounds,max = TRUE, types = "I")
       b<-Rglpk::Rglpk_solve_LP(obj = v, mat = rbind(t(v),rdb.row,rdb.row,rdb.row2), dir = c(">=","<=",">=","=="), rhs = c(x,rdbrange[2]-1,rdbrange[1]-1,rhs.var), bounds,max = FALSE, types = "I")
       
@@ -186,7 +190,14 @@ assign_comp_from_mz <- function(mz,
         }
       }else{
         return(c(rep("",3)))
-      }}))
+      }})
+    
+    return(data.frame("composition" = unlist(lapply(results,`[[`, 1)),
+                      "theo.mass" = unlist(lapply(results,`[[`, 2)),
+                      "delta" = unlist(lapply(results,`[[`, 3))
+                      )
+           )
+    
     
   }
   
