@@ -42,10 +42,10 @@ df2 <- df %>%
 ```
 ### Prepare data: Convert dataframe to a matrix in the 'wide' format (i.e. with rows corresponding to lipids/species, columns corresponding to samples/replicates)
 ```{r}
-wide.matrix <- df2 %>% dplyr::select(c("rel.intensity","fullsample","mf")) %>% 
+wide.matrix <- df2 %>% dplyr::select(c("rel.intensity","fullsample","composition")) %>% 
   filter(rel.intensity != 100) %>% 
   dplyr::rename("sample" = "fullsample",
-                "comp" = "mf") %>% 
+                "comp" = "composition") %>% 
   pivot_wider(names_from = sample,
               values_from = rel.intensity,
               values_fn = mean)
