@@ -83,6 +83,9 @@ guess_exact_structures <- function(structures,
                                             df$structure # this is y
       ))
     }else{
+      if(strain != "n/a"){
+        base::warning("none of the supplied general structures have strain-specific exact structures")
+      }
       pls2 <- pl_database[pl_database$strain == "",]
       df$exact.structure.1 <- unlist(lapply(df$structure,function(x) ifelse(x %in% pls2$gen.structure,unname(unlist(pls2[match(x,pls2$gen.structure),2:ncol(pls2)]))[1],"" )) )
       df$exact.structure.2 <- unlist(lapply(df$structure,function(x) ifelse(x %in% pls2$gen.structure,unname(unlist(pls2[match(x,pls2$gen.structure),2:ncol(pls2)]))[2],"" )) )
@@ -115,6 +118,8 @@ guess_exact_structures <- function(structures,
       df<-df[, !(colnames(df) %in% c("exact.structure.1"))]
     }
     
+  }else{
+    base::warning("none of the supplied general structures have exact structure matches")
   }
   
   df

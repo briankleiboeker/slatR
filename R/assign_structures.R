@@ -5,7 +5,7 @@
 #' @param comp list (or dataframe column) of elemental compositions for which structures are to be assigned.
 #' @param ion.mode which ion mode the samples were run in. One of "neg.ion","pos.ion", or "neutral" ("neutral" searches for structures as exact compositions / neutral species).
 #' @param adducts which ions/adducts to search for compositions as. Defaults to c("m.plus.h","m.plus.ammonia","m.plus.sodium") in positive ion mode, c("m.minus.h","m.plus.chloride","m.minus.2h") in negative ion mode, and the inclusive union of these two lists in neutral mode.
-#' @param domain what domain of life the data originates from. "euk" for eukaryotic (default) or "bact" for bacterial.
+#' @param domain what domain of life the data originates from. "euk" for eukaryotic (default) or "bact" for bacterial. Used for determining the carbon number cutoff for lyso- species (as opposed to diacyl or dialkyl species with short carbon chains).
 #' @param lois which lipid classes to look for. Defaults to c("pc","sm","tag","dag","gdg") in positive ion mode, c("pe","cer","cl","pi","pg","pa","ps","ffa","gdg") in negative ion mode, and the inclusive union of these two lists in neutral mode (Diacylglycerol = "dag", Triacylglycerol = "tag", Phosphatidic acid = "pa", Phosphatidylglycerol = "pg", Phosphatidylinositol = "pi", Cardiolipin = "cl", Sphingomyelin = "sm", Ceramide = "cer", Phosphatidylcholine = "pc", Phosphatidylethanolamine = "pe", Phosphatidylserine = "ps", Free fatty acids = "ffa", Glycosyldiacylglycerols = "gdg")
 #' @param max.dbl.bnds maximum number of acyl+alkyl chain double bonds allowed in returned structures. Defaults to 14.
 #' @param carbon_isotope_symbol string which is used to denote carbon isotope used, if applicable. Defaults to "C\[13\]".

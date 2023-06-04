@@ -22,7 +22,7 @@ assign_structures(
 
 \item{adducts}{which ions/adducts to search for compositions as. Defaults to c("m.plus.h","m.plus.ammonia","m.plus.sodium") in positive ion mode, c("m.minus.h","m.plus.chloride","m.minus.2h") in negative ion mode, and the inclusive union of these two lists in neutral mode.}
 
-\item{domain}{what domain of life the data originates from. "euk" for eukaryotic (default) or "bact" for bacterial.}
+\item{domain}{what domain of life the data originates from. "euk" for eukaryotic (default) or "bact" for bacterial. Used for determining the carbon number cutoff for lyso- species (as opposed to diacyl or dialkyl species with short carbon chains).}
 
 \item{lois}{which lipid classes to look for. Defaults to c("pc","sm","tag","dag","gdg") in positive ion mode, c("pe","cer","cl","pi","pg","pa","ps","ffa","gdg") in negative ion mode, and the inclusive union of these two lists in neutral mode (Diacylglycerol = "dag", Triacylglycerol = "tag", Phosphatidic acid = "pa", Phosphatidylglycerol = "pg", Phosphatidylinositol = "pi", Cardiolipin = "cl", Sphingomyelin = "sm", Ceramide = "cer", Phosphatidylcholine = "pc", Phosphatidylethanolamine = "pe", Phosphatidylserine = "ps", Free fatty acids = "ffa", Glycosyldiacylglycerols = "gdg")}
 
